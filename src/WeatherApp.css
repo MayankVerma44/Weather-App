@@ -55,7 +55,7 @@ body, html {
   
   /* Loading and Error Message */
   .loading, .error {
-    color: #ff3333;
+    color: #000000;
     margin-top: 10px;
   }
   
