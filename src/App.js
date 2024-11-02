@@ -31,9 +31,9 @@ const App = () => {
      } finally {
        setLoading(false); // Always set loading to false after fetch
      }
-};
+  };
   const handleSearch = () => {
-    fetchWeather(); // Trigger the fetch operation
+    fetchWeather(); 
   };
 
   return (
@@ -44,16 +44,19 @@ const App = () => {
           type="text"
           placeholder="Enter city name"
           value={city}
-          onChange={(e) => setCity(e.target.value)} // Update city state on input change
+          onChange={(e) => setCity(e.target.value)} 
         />
         <button onClick={handleSearch}>Search</button> {/* Button to initiate search */}
       </div>
+
+
       {/* Display loading message right below the search bar */}
       {loading && <p className="loading">Loading data…</p>}
       
-      {error && <p className="error">{error}</p>}       {/* Display error message if there is an error */}
+      {error && <p className="error">{error}</p>}  {/* Display error message if there is an error */}
 
   
+      {/* Display loading message right below the search bar */}
       {weatherData && ( // Render weather data only if available
         <div className="weather-cards">
           <WeatherCard
