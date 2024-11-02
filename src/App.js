@@ -14,6 +14,9 @@ const App = () => {
     if (!city) return; // Prevent fetch if city is empty
     setLoading(true); // Set loading to true before fetching
     setError(""); // Clear previous errors
+     // Delay the fetch operation
+  setTimeout(async () => {
+    setError(""); // Clear previous errors
     try {
       const response = await fetch(
         `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
@@ -24,12 +27,11 @@ const App = () => {
       const data = await response.json();
       setWeatherData(data); // Set weather data from response
     } catch (error) {
-      setError("Failed to fetch weather data"); // Set error message
-      alert(error.message); // Optional: alert the user
+      setError("Failed to fetch weather data: " + error.message); // Set error message
     } finally {
       setLoading(false); // Always set loading to false after fetch
     }
-  };
+  }, 1000); // 1000 milliseconds (1 second) delay
 
   const handleSearch = () => {
     fetchWeather(); // Trigger the fetch operation
@@ -50,7 +52,7 @@ const App = () => {
       {/* Display loading message right below the search bar */}
       {loading && <p className="loading">Loading data…</p>}
   
-      {error && <p className="error">{error}</p>} {/* Display error message if there is an error */}
+      {/* {error && <p className="error">{error}</p>} Display error message if there is an error */}
   
       {weatherData && ( // Render weather data only if available
         <div className="weather-cards">
