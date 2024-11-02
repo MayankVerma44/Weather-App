@@ -32,7 +32,7 @@ const App = () => {
       setLoading(false); // Always set loading to false after fetch
     }
   }, 1000); // 1000 milliseconds (1 second) delay
-
+}
   const handleSearch = () => {
     fetchWeather(); // Trigger the fetch operation
   };
