@@ -51,8 +51,9 @@ const App = () => {
       </div>
       {/* Display loading message right below the search bar */}
       {loading && <p className="loading">Loading data…</p>}
-  
-      {/* {error && <p className="error">{error}</p>} Display error message if there is an error */}
+      
+      {error && <p className="error">{error}</p>}       {/* Display error message if there is an error */}
+
   
       {weatherData && ( // Render weather data only if available
         <div className="weather-cards">
