@@ -15,24 +15,23 @@ const App = () => {
     setLoading(true); // Set loading to true before fetching
     setError(""); // Clear previous errors
      // Delay the fetch operation
-  setTimeout(async () => {
-    setError(""); // Clear previous errors
-    try {
-      const response = await fetch(
-        `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch weather data");
-      }
-      const data = await response.json();
-      setWeatherData(data); // Set weather data from response
-    } catch (error) {
-      setError("Failed to fetch weather data: " + error.message); // Set error message
-    } finally {
-      setLoading(false); // Always set loading to false after fetch
-    }
-  }, 1000); // 1000 milliseconds (1 second) delay
-}
+     await delay(1000); // Wait for 1 second
+     try {
+       const response = await fetch(
+         `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
+       );
+       if (!response.ok) {
+         throw new Error("Failed to fetch weather data"); // Throw an error if response is not ok
+       }
+       const data = await response.json();
+       setWeatherData(data); // Set weather data from response
+     } catch (error) {
+       setError("Failed to fetch weather data"); // Set error state with a fixed message
+       alert("Failed to fetch weather data"); // Alert the user with the simplified error message
+     } finally {
+       setLoading(false); // Always set loading to false after fetch
+     }
+};
   const handleSearch = () => {
     fetchWeather(); // Trigger the fetch operation
   };
