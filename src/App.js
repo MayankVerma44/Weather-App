@@ -43,13 +43,16 @@ const App = () => {
           type="text"
           placeholder="Enter city name"
           value={city}
-          onChange={(e) => setCity(e.target.value)} // Update city on input change
+          onChange={(e) => setCity(e.target.value)} // Update city state on input change
         />
-        <button onClick={handleSearch}>Search</button> {/* Search button */}
+        <button onClick={handleSearch}>Search</button> {/* Button to initiate search */}
       </div>
-      {loading && <p className="loading">Loading data…</p>} {/* Loading state */}
-      {error && <p className="error">{error}</p>} {/* Error message */}
-      {weatherData && (
+      {/* Display loading message right below the search bar */}
+      {loading && <p className="loading">Loading data…</p>}
+  
+      {error && <p className="error">{error}</p>} {/* Display error message if there is an error */}
+  
+      {weatherData && ( // Render weather data only if available
         <div className="weather-cards">
           <WeatherCard
             temp={weatherData.current.temp_c}
@@ -60,7 +63,7 @@ const App = () => {
         </div>
       )}
     </div>
-  );
+  );  
 };
 
 export default App;
