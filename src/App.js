@@ -9,13 +9,13 @@ const App = () => {
   const [error, setError] = useState("");
 
   const API_KEY = "93b65abc26154df8bb5230716240111"; 
-
+  const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   const fetchWeather = async () => {
     if (!city) return; // Prevent fetch if city is empty
     setLoading(true); // Set loading to true before fetching
     setError(""); // Clear previous errors
      // Delay the fetch operation
-     await delay(1000); // Wait for 1 second
+     await delay(700); // Wait for 1 second
      try {
        const response = await fetch(
          `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
